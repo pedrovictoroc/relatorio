@@ -3,17 +3,25 @@ opção = input("Deseja CRIAR um arquivo ou LER: ")
 if opção == "CRIAR":
 	nome_arquivo = input("Entre o nome do arquivo: ") #pegar o nome do arquivo
 	criador_de_arquivo = open(nome_arquivo,'w') #abrir o arquivo em modo de escrita
-	print("Preencha as informações a seguir!")
 	
+	print("Preencha as informações a seguir!")
+	quantidade = int(input("Informe a quantidade de equipamentos: "))
+	
+	criador_de_arquivo.write("Data: \n")
+	criador_de_arquivo.write("Hora: \n")
+	
+	for i in range(0,quantidade):	
+		criador_de_arquivo.write("Informe o modelo do",i+1," equipamento: \n".
+
 	data = input("Informe a data: ") #entrada da data
+	criador_de_arquivo.seek(0)
 	criador_de_arquivo.write(data)
 	criador_de_arquivo.write("\n")
 	
+	criador_de_arquivo.seek(1)
 	hora = input("Informe a hora: ")
 	criador_de_arquivo.write(hora)
 	criador_de_arquivo.write("\n")	
-	
-	quantidade = int(input("Informe a quantidade de equipamentos: "))
 	
 	for i in range(0,quantidade):
 		modelo_de_equipamento = input("Informe o modelo do equipamento: ")
@@ -22,6 +30,7 @@ if opção == "CRIAR":
 		numero_de_serie = input("Informe o numero de serie: ")
 		criador_de_arquivo.write(numero_de_serie)
 		criador_de_arquivo.write("\n")
+
 	criador_de_arquivo.close()
 
 elif opção == "LER":
