@@ -1,30 +1,35 @@
 opção = input("Deseja CRIAR um arquivo ou LER: ")
 
-if opção == "CRIAR":
-	nome_arquivo = input("Entre o nome do arquivo: ") #pegar o nome do arquivo
-	criador_de_arquivo = open(nome_arquivo,'w') #abrir o arquivo em modo de escrita
-	print("Preencha as informações a seguir!")
-	
-	data = input("Informe a data: ") #entrada da data
-	criador_de_arquivo.write(data)
-	criador_de_arquivo.write("\n")
-	
-	hora = input("Informe a hora: ")
-	criador_de_arquivo.write(hora)
-	criador_de_arquivo.write("\n")	
-	
-	quantidade = int(input("Informe a quantidade de equipamentos: "))
-	
-	for i in range(0,quantidade):
-		modelo_de_equipamento = input("Informe o modelo do equipamento: ")
-		criador_de_arquivo.write(modelo_de_equipamento)
-		criador_de_arquivo.write("\n")
-		numero_de_serie = input("Informe o numero de serie: ")
-		criador_de_arquivo.write(numero_de_serie)
-		criador_de_arquivo.write("\n")
-	criador_de_arquivo.close()
+if opção.upper() == "CRIAR":
+  nome_arquivo = input("Entre o nome do arquivo: ") #pegar o nome do arquivo
+  criador_de_arquivo = open(nome_arquivo,'w') #abrir o arquivo em modo de escrita
+  print("Preencha as informações a seguir!")
 
-elif opção == "LER":
+  data = input("Informe a data: ") #entrada da data
+  data = "DATA: " + data
+  criador_de_arquivo.write(data)
+  criador_de_arquivo.write("\n")
+	
+  hora = input("Informe a hora: ")
+  hora = "HORA: " + hora
+  criador_de_arquivo.write(hora)
+  criador_de_arquivo.write("\n")	
+	
+  quantidade = int(input("Informe a quantidade de equipamentos: "))
+	
+  for i in range(0,quantidade):
+    modelo_de_equipamento = input("Informe o modelo do equipamento: ")
+    modelo_de_equipamento = "MODELO DO {}º EQUIPAMENTO: ".format(i+1) + modelo_de_equipamento
+    criador_de_arquivo.write(modelo_de_equipamento)
+    criador_de_arquivo.write("\n")
+
+    numero_de_serie = input("Informe o numero de serie: ")
+    numero_de_serie = "NUMERO DE SERIE DO {} EQUIPAMENTO: ".format(i+1) + numero_de_serie
+    criador_de_arquivo.write(numero_de_serie)
+    criador_de_arquivo.write("\n")
+  criador_de_arquivo.close()
+
+elif opção.upper() == "LER":
 	nome_arquivo = input("Informe o nome do arquivo: ")
 	armazenar_conteudo = open(nome_arquivo,'r')
 	print(armazenar_conteudo.read())
